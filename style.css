@@ -1,0 +1,211 @@
+/* Font faces */
+@font-face {
+    font-family: 'ChiffChaff';
+    src: url('fonts/ChiffChaff-Uprising.woff') format('woff')
+}
+
+@font-face {
+    font-family: 'KynetonArtGrotesque-Light';
+    src: url('fonts/KynetonArtGrotesque-Light.woff') format('woff')
+}
+
+@font-face{
+    font-family: 'KynetonArtGrotesque-LightItalic';
+    src: url('fonts/KynetonArtGrotesque-LightItalic.woff') format('woff')
+}
+
+@font-face{
+    font-family: 'KynetonArtGrotesque-Regular';
+    src: url('../vittoria-cugno/fonts/KynetonArtGrotesque-Regular.woff') format('woff')
+}
+
+@font-face{
+    font-family: 'KynetonArtGrotesque-RegularItalic';
+    src: url('fonts/KynetonArtGrotesque-RegularItalic.woff') format('woff')
+}
+
+@font-face{
+    font-family: 'KynetonArtGrotesque-DemiBold';
+    src: url('fonts/KynetonArtGrotesque-DemiBold.woff') format('woff')
+}
+
+@font-face{
+    font-family: 'KynetonArtGrotesque-DemiBoldItalic';
+    src: url('fonts/KynetonArtGrotesque-DemiBoldItalic.woff') format('woff')
+}
+
+@font-face {
+  font-family: 'Sentient-Extralight';
+  src: url('../fonts/Sentient-Extralight.woff2') format('woff2');
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sentient-ExtralightItalic';
+  src: url('../fonts/Sentient-ExtralightItalic.woff2') format('woff2');
+  font-weight: 200;
+  font-display: swap;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Sentient-Light';
+  src: url('../fonts/Sentient-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sentient-LightItalic';
+  src: url('../fonts/Sentient-LightItalic.woff2') format('woff2');
+  font-weight: 300;
+  font-display: swap;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Sentient-Regular';
+  src: url('../fonts/Sentient-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sentient-Italic';
+  src: url('../fonts/Sentient-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Sentient-Medium';
+  src: url('../fonts/Sentient-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sentient-MediumItalic';
+  src: url('../fonts/Sentient-MediumItalic.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+  font-style: italic;
+}
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+/* Colours */
+
+:root{
+    --primary-bg-colour: #fffaed;
+    --darkbrown: #3C3730;
+    --orange: #F44900;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+    font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+body {
+    font-family: 'KynetonArtGrotesque-Regular';
+	line-height: 1;
+    background-color: var(--primary-bg-colour);
+    color: var(--darkbrown);
+}
+
+a {
+    color: var(--orange);
+    text-decoration: none; 
+}
+
+a:hover{
+    color: var(--orange);
+}
+
+ol, ul {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    padding: 2rem;
+    font-size: 1.8rem;
+    background-color: var(--primary-bg-colour);
+    box-sizing: border-box;
+    font-family: 'Sentient-Light', serif;
+}
+
+header a {
+    color: var(--darkbrown);
+}
+
+header a:hover {
+    color: var(--orange);
+}
+
+.headerleft {
+    font-family: 'ChiffChaff';
+    font-size: 2rem;
+    text-align: left;
+}
+
+.headermiddle {
+    text-align: center;
+    display: flex;
+    gap: 7rem;
+    justify-content: center;
+}
+
+.headerright {
+    text-align: right;
+}
