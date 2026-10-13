@@ -16,7 +16,7 @@
 
 @font-face{
     font-family: 'KynetonArtGrotesque-Regular';
-    src: url('../vittoria-cugno/fonts/KynetonArtGrotesque-Regular.woff') format('woff')
+    src: url('fonts/KynetonArtGrotesque-Regular.woff') format('woff')
 }
 
 @font-face{
@@ -36,14 +36,14 @@
 
 @font-face {
   font-family: 'Sentient-Extralight';
-  src: url('../fonts/Sentient-Extralight.woff2') format('woff2');
+  src: url('fonts/Sentient-Extralight.woff2') format('woff2');
   font-display: swap;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Sentient-ExtralightItalic';
-  src: url('../fonts/Sentient-ExtralightItalic.woff2') format('woff2');
+  src: url('fonts/Sentient-ExtralightItalic.woff2') format('woff2');
   font-weight: 200;
   font-display: swap;
   font-style: italic;
@@ -51,7 +51,7 @@
 
 @font-face {
   font-family: 'Sentient-Light';
-  src: url('../fonts/Sentient-Light.woff2') format('woff2');
+  src: url('fonts/Sentient-Light.woff2') format('woff2');
   font-weight: 300;
   font-display: swap;
   font-style: normal;
@@ -59,7 +59,7 @@
 
 @font-face {
   font-family: 'Sentient-LightItalic';
-  src: url('../fonts/Sentient-LightItalic.woff2') format('woff2');
+  src: url('fonts/Sentient-LightItalic.woff2') format('woff2');
   font-weight: 300;
   font-display: swap;
   font-style: italic;
@@ -67,7 +67,7 @@
 
 @font-face {
   font-family: 'Sentient-Regular';
-  src: url('../fonts/Sentient-Regular.woff2') format('woff2');
+  src: url('fonts/Sentient-Regular.woff2') format('woff2');
   font-weight: 400;
   font-display: swap;
   font-style: normal;
@@ -75,7 +75,7 @@
 
 @font-face {
   font-family: 'Sentient-Italic';
-  src: url('../fonts/Sentient-Italic.woff2') format('woff2');
+  src: url('fonts/Sentient-Italic.woff2') format('woff2');
   font-weight: 400;
   font-display: swap;
   font-style: italic;
@@ -83,7 +83,7 @@
 
 @font-face {
   font-family: 'Sentient-Medium';
-  src: url('../fonts/Sentient-Medium.woff2') format('woff2');
+  src: url('fonts/Sentient-Medium.woff2') format('woff2');
   font-weight: 500;
   font-display: swap;
   font-style: normal;
@@ -91,24 +91,42 @@
 
 @font-face {
   font-family: 'Sentient-MediumItalic';
-  src: url('../fonts/Sentient-MediumItalic.woff2') format('woff2');
+  src: url('fonts/Sentient-MediumItalic.woff2') format('woff2');
   font-weight: 500;
   font-display: swap;
   font-style: italic;
 }
 
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
+@font-face {
+    font-family: 'RobotoMono-Regular';
+    src: url('fonts/RobotoMono-Regular.woff') format('woff')
+}
+
+@font-face {
+    font-family: 'RobotoMono-Italic';
+    src: url('fonts/RobotoMono-Italic.woff') format('woff')
+}
+
+@font-face {
+    font-family: 'RobotoMono-Medium';
+    src: url('fonts/RobotoMono-Medium.woff') format('woff')
+}
+
+@font-face {
+    font-family: 'RobotoMono-MediumItalic';
+    src: url('fonts/RobotoMono-MediumItalic.woff') format('woff')
+}
 
 /* Colours */
 
-:root{
+:root {
     --primary-bg-colour: #fffaed;
     --darkbrown: #3C3730;
     --orange: #F44900;
+    --warmlightgrey: #C3BFB7;
 }
+
+/* Reset */
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -123,23 +141,22 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
     font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+    font: inherit;
+    vertical-align: baseline;
 }
 
-/* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
-	display: block;
+    display: block;
 }
 
 body {
     font-family: 'KynetonArtGrotesque-Regular';
-	line-height: 1;
+    line-height: 1;
     background-color: var(--primary-bg-colour);
     color: var(--darkbrown);
 }
@@ -149,28 +166,35 @@ a {
     text-decoration: none; 
 }
 
-a:hover{
+a:hover {
     color: var(--orange);
 }
 
 ol, ul {
-	list-style: none;
+    list-style: none;
 }
 
 blockquote, q {
-	quotes: none;
+    quotes: none;
 }
 
 blockquote:before, blockquote:after,
 q:before, q:after {
-	content: '';
-	content: none;
+    content: '';
+    content: none;
 }
 
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
+
+h2 {
+    font-family: 'Sentient-Light', serif;
+    font-size: 2rem;
+}
+
+/* Header */
 
 header {
     display: grid;
@@ -183,13 +207,14 @@ header {
     background-color: var(--primary-bg-colour);
     box-sizing: border-box;
     font-family: 'Sentient-Light', serif;
+    z-index: 100;
 }
 
 header a {
     color: var(--darkbrown);
 }
 
-header a:hover {
+header a:hover, .dropdown:hover .dropbtn {
     color: var(--orange);
 }
 
@@ -208,4 +233,132 @@ header a:hover {
 
 .headerright {
     text-align: right;
+}
+
+.dropdown {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.dropdown .dropbtn {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    font-size: 1.8rem;
+    color: var(--darkbrown);
+    background-color: inherit;
+    font-family: inherit;
+    line-height: 1;
+    display: block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--primary-bg-colour);
+    min-width: 160px;
+    z-index: 101;
+}
+
+.dropdown-content a{
+    float: none;
+    color: var(--darkbrown);
+    padding: 1rem;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Landing */
+
+.landingcontainer {
+    display: flex;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    justify-content: center;
+}
+
+.landingimage {
+    width: 55%;
+}
+
+/* Year heading */
+
+.titleborder {
+    border-bottom: 1px solid;
+    padding-bottom: 10px;
+    border-color: var(--warmlightgrey);
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Feature image — full width, natural proportions, no crop */
+
+.feature-image {
+    margin: 0 1rem 0 1rem;
+}
+
+.feature-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.feature-image a {
+    position: relative;
+    display: block;
+}
+
+.feature-caption {
+    font-family: 'RobotoMono-Regular';
+    font-size: 0.75rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    box-sizing: border-box;
+}
+
+.feature-image a:hover .feature-caption {
+    opacity: 0.8;
+}
+
+/* Artwork grid — layout handled by Justified Gallery */
+
+.artwork-grid {
+    margin: 0 0 5rem 0;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.jg-caption {
+    font-family: 'RobotoMono-Regular' !important;
+    font-size: 0.75rem !important;
+    background: rgba(0, 0, 0, 0.4) !important;
+    padding: 0.5rem 1rem !important;
+}
+
+/* PhotoSwipe caption */
+
+.pswp__custom-caption {
+    font-family: 'RobotoMono-Regular';
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 0.875rem;
+    text-align: center;
+    white-space: nowrap;
 }
