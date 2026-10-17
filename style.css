@@ -124,6 +124,13 @@
     --darkbrown: #3C3730;
     --orange: #F44900;
     --warmlightgrey: #C3BFB7;
+
+    /* Spacing scale */
+    --space-xs: 0.5rem;
+    --space-s: 1rem;
+    --space-m: 2rem;
+    --space-l: 3rem;
+    --space-xl: 4rem;
 }
 
 /* Reset */
@@ -154,11 +161,17 @@ footer, header, hgroup, menu, nav, section {
     display: block;
 }
 
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: 'KynetonArtGrotesque-Regular';
+    font-family: 'KynetonArtGrotesque-Light';
+    font-size: 1.2rem;
     line-height: 1;
     background-color: var(--primary-bg-colour);
     color: var(--darkbrown);
+    padding-top: 7rem; /* clears the fixed header; 8rem from 768px */
 }
 
 a {
@@ -189,25 +202,24 @@ table {
     border-spacing: 0;
 }
 
-h2 {
-    font-family: 'Sentient-Light', serif;
-    font-size: 2rem;
-}
-
 /* Header */
 
+/* Phones: one row. The logo column is only as wide as its longest word,
+   so "Vittoria Cugno" wraps onto two lines and leaves room for the menu */
 header {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: min-content 1fr auto;
+    gap: var(--space-s);
     position: fixed;
     width: 100%;
     top: 0;
-    padding: 2rem;
-    font-size: 1.8rem;
+    padding: var(--space-s);
+    font-size: 1.1rem;
     background-color: var(--primary-bg-colour);
     box-sizing: border-box;
     font-family: 'Sentient-Light', serif;
     z-index: 100;
+    line-height: 1.5;
 }
 
 header a {
@@ -220,19 +232,44 @@ header a:hover, .dropdown:hover .dropbtn {
 
 .headerleft {
     font-family: 'ChiffChaff';
-    font-size: 2rem;
+    font-size: 1.4rem;
+    line-height: 1.1;
     text-align: left;
 }
 
 .headermiddle {
     text-align: center;
     display: flex;
-    gap: 7rem;
+    gap: var(--space-s);
     justify-content: center;
 }
 
 .headerright {
     text-align: right;
+}
+
+/* Wider screens: three equal columns, as designed */
+@media (min-width: 768px) {
+    body {
+        padding-top: 8rem;
+    }
+
+    header {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 0;
+        padding: var(--space-s) var(--space-m);
+        font-size: 1.8rem;
+    }
+
+    .headerleft {
+        font-size: 2rem;
+        line-height: 1.5;
+    }
+
+    /* Grows with the screen width: 2rem at minimum, up to the full 7rem on very wide screens */
+    .headermiddle {
+        gap: clamp(var(--space-m), 6vw, 7rem);
+    }
 }
 
 .dropdown {
@@ -242,14 +279,13 @@ header a:hover, .dropdown:hover .dropbtn {
 
 .dropdown .dropbtn {
     margin: 0;
-    padding: 0;
     border: none;
     outline: none;
-    font-size: 1.8rem;
+    font-size: inherit; /* follows the header's size at each screen width */
     color: var(--darkbrown);
     background-color: inherit;
     font-family: inherit;
-    line-height: 1;
+    line-height: 1.5;
     display: block;
 }
 
@@ -257,14 +293,14 @@ header a:hover, .dropdown:hover .dropbtn {
     display: none;
     position: absolute;
     background-color: var(--primary-bg-colour);
-    min-width: 160px;
+    min-width: 110px;
     z-index: 101;
 }
 
 .dropdown-content a{
     float: none;
     color: var(--darkbrown);
-    padding: 1rem;
+    padding: .7rem 1rem .7rem 1rem;
     text-decoration: none;
     display: block;
     text-align: left;
@@ -274,11 +310,25 @@ header a:hover, .dropdown:hover .dropbtn {
     display: block;
 }
 
+/* Footer */
+.footer {
+    padding: var(--space-xl) var(--space-s) var(--space-m) var(--space-m);
+}
+
+.footer-text {
+    font-size: .8rem;
+    font-family: 'RobotoMono-Regular';
+    color: grey;
+    text-align: center;
+    line-height: 1.3;
+}
+
+
 /* Landing */
 
 .landingcontainer {
     display: flex;
-    margin-top: 10%;
+    margin-top: var(--space-l);
     margin-bottom: 10%;
     justify-content: center;
 }
@@ -289,19 +339,17 @@ header a:hover, .dropdown:hover .dropbtn {
 
 /* Year heading */
 
-.titleborder {
+.border {
     border-bottom: 1px solid;
-    padding-bottom: 10px;
+    padding-bottom: var(--space-xs);
     border-color: var(--warmlightgrey);
-    margin-left: 1rem;
-    margin-right: 1rem;
-    margin-bottom: 1rem;
+    margin: 0 var(--space-s) var(--space-s);
 }
 
 /* Feature image — full width, natural proportions, no crop */
 
 .feature-image {
-    margin: 0 1rem 0 1rem;
+    margin: 0 var(--space-s);
 }
 
 .feature-image img {
@@ -322,7 +370,7 @@ header a:hover, .dropdown:hover .dropbtn {
     bottom: 0;
     left: 0;
     width: 100%;
-    padding: 0.5rem 1rem;
+    padding: var(--space-xs) var(--space-s);
     background: rgba(0, 0, 0, 0.4);
     color: white;
     opacity: 0;
@@ -336,8 +384,10 @@ header a:hover, .dropdown:hover .dropbtn {
 
 /* Artwork grid — layout handled by Justified Gallery */
 
+/* Spacing is set here, not by the gallery script (border: 0 in index.html) */
 .artwork-grid {
-    margin: 0 0 5rem 0;
+    width: auto; /* overrides the library's width: 100%, so the side margins fit inside the page */
+    margin: var(--space-s) var(--space-s) 5rem;
     overflow: hidden;
     box-sizing: border-box;
 }
@@ -346,8 +396,123 @@ header a:hover, .dropdown:hover .dropbtn {
     font-family: 'RobotoMono-Regular' !important;
     font-size: 0.75rem !important;
     background: rgba(0, 0, 0, 0.4) !important;
-    padding: 0.5rem 1rem !important;
+    padding: var(--space-xs) var(--space-s) !important;
 }
+
+/* Text */
+
+h1 {
+    font-family: 'Sentient-Light', serif;
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-family: 'Sentient-Light', serif;
+    font-size: 2rem;
+}
+
+.p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+.p b {
+    font-family: 'KynetonArtGrotesque-DemiBold';
+}
+
+.p i {
+    font-family: 'KynetonArtGrotesque-LightItalic';
+}
+
+/* Two columns: stacked on phones, side by side from 768px */
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+}
+
+.flex-container-right img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+@media (min-width: 768px) {
+    .flex-container {
+        flex-direction: row;
+    }
+    .flex-container-left {
+        flex: 2;
+    }
+    .flex-container-right {
+        flex: 2;
+    }
+}
+
+/* About: contact links */
+
+.contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    margin-top: var(--space-m);
+    line-height: 1;
+}
+
+.contact-list li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+/* About: CV */
+
+.cv-heading {
+    font-family: 'KynetonArtGrotesque-DemiBold';
+    font-size: inherit;
+    margin-bottom: var(--space-xs);
+}
+
+.cv-list li {
+    display: flex;
+    gap: var(--space-s);
+}
+
+/* Formatting */
+
+.inline-icon {
+    height: 1.4rem;
+    width: auto;
+}
+
+.side-padding {
+    padding: 0 var(--space-m);
+}
+
+/* Stack: a column with even space between its children */
+.stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+}
+
+.stack-m {
+    gap: var(--space-m);
+}
+
+.stack-l {
+    gap: var(--space-l);
+}
+
+.stack-xl {
+    gap: var(--space-xl);
+}
+
+.mt-l {
+    margin-top: var(--space-l);
+}
+
 
 /* PhotoSwipe caption */
 
@@ -361,4 +526,120 @@ header a:hover, .dropdown:hover .dropbtn {
     font-size: 0.875rem;
     text-align: center;
     white-space: nowrap;
+}
+
+/* Slider — one image at a time, no JavaScript.
+   Hidden radio buttons remember which slide is showing; clicking a label selects one. */
+
+.slider-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.slider-window {
+    overflow: hidden;
+}
+
+.slider-track {
+    display: flex;
+    align-items: flex-start;
+    transition: transform 0.6s ease;
+}
+
+.slider {
+    position: relative;
+}
+
+.slider-slide {
+    flex: 0 0 100%;
+}
+
+.slider-slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Arrows sit on top of the slider and stay still while the images move */
+.slider-arrows {
+    display: none;
+}
+
+/* Each slider counts its own inputs, so a page can have several sliders
+   (up to 8 images each — add lines here and below for more) */
+.slider-input:nth-of-type(1):checked ~ .slider-controls .slider-arrows:nth-child(1),
+.slider-input:nth-of-type(2):checked ~ .slider-controls .slider-arrows:nth-child(2),
+.slider-input:nth-of-type(3):checked ~ .slider-controls .slider-arrows:nth-child(3),
+.slider-input:nth-of-type(4):checked ~ .slider-controls .slider-arrows:nth-child(4),
+.slider-input:nth-of-type(5):checked ~ .slider-controls .slider-arrows:nth-child(5),
+.slider-input:nth-of-type(6):checked ~ .slider-controls .slider-arrows:nth-child(6),
+.slider-input:nth-of-type(7):checked ~ .slider-controls .slider-arrows:nth-child(7),
+.slider-input:nth-of-type(8):checked ~ .slider-controls .slider-arrows:nth-child(8) {
+    display: block;
+}
+
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background: var(--darkbrown);
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.slider-arrow img {
+    width: .7rem;
+    height: auto;
+    display: block;
+}
+
+.slider-arrow:hover {
+    opacity: 1;
+}
+
+.slider-arrow-prev {
+    left: var(--space-s);
+}
+
+.slider-arrow-next {
+    right: var(--space-s);
+}
+
+.slider-arrow-prev img {
+    transform: translateX(-2px);
+}
+
+.slider-arrow-next img {
+    transform: translateX(2px);
+}
+
+/* Focus ring for keyboard users */
+.slider-input:focus-visible ~ .slider-window {
+    outline: 2px solid var(--orange);
+    outline-offset: 4px;
+}
+
+/* Move the track to the selected slide */
+.slider-input:nth-of-type(2):checked ~ .slider-window .slider-track { transform: translateX(-100%); }
+.slider-input:nth-of-type(3):checked ~ .slider-window .slider-track { transform: translateX(-200%); }
+.slider-input:nth-of-type(4):checked ~ .slider-window .slider-track { transform: translateX(-300%); }
+.slider-input:nth-of-type(5):checked ~ .slider-window .slider-track { transform: translateX(-400%); }
+.slider-input:nth-of-type(6):checked ~ .slider-window .slider-track { transform: translateX(-500%); }
+.slider-input:nth-of-type(7):checked ~ .slider-window .slider-track { transform: translateX(-600%); }
+.slider-input:nth-of-type(8):checked ~ .slider-window .slider-track { transform: translateX(-700%); }
+
+@media (prefers-reduced-motion: reduce) {
+    .slider-track {
+        transition: none;
+    }
 }
