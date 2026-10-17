@@ -29,7 +29,6 @@
                 <a href="#" class="dropbtn">Images</a>
                 <div class="dropdown-content">
                     <a href="installations.html">Installations</a>
-                    <a href="#">Sketchbook</a>
                 </div>
             </div>
         </div>
@@ -528,9 +527,21 @@
         // Initialise PhotoSwipe on feature images
         initLightbox('.feature-image');
 
+        // Arriving from another page with a year in the address (e.g. index.html#2025):
+        // the browser jumps before the grids have their full height, so jump again once they do
+        function jumpToYear() {
+            if (location.hash) {
+                const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+                if (target) target.scrollIntoView();
+            }
+        }
+
         // Initialise Justified Gallery on every year's grid, then PhotoSwipe on each grid after layout is done
         $(document).ready(function() {
-            $('.artwork-grid').justifiedGallery({
+            const grids = $('.artwork-grid');
+            let gridsReady = 0;
+
+            grids.justifiedGallery({
                 rowHeight: 400,
                 maxRowHeight: 600,
                 margins: 16,
@@ -538,7 +549,14 @@
                 lastRow: 'nojustify',
                 captions: true
             }).on('jg.complete', function() {
+                // jg.complete also fires after every resize, so only set each grid up once
+                if ($(this).data('ready')) return;
+                $(this).data('ready', true);
+
                 initLightbox('#' + this.id);
+
+                gridsReady++;
+                if (gridsReady === grids.length) jumpToYear();
             });
 
             $(window).on('resize', function() {
