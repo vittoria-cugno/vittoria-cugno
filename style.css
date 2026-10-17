@@ -344,6 +344,7 @@ header a:hover, .dropdown:hover .dropbtn {
     padding-bottom: var(--space-xs);
     border-color: var(--warmlightgrey);
     margin: 0 var(--space-s) var(--space-s);
+    scroll-margin-top: 8rem;
 }
 
 /* Feature image — full width, natural proportions, no crop */
